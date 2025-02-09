@@ -320,24 +320,48 @@ document.addEventListener("DOMContentLoaded", () => {
                 <th>日付時間</th>
             </tr>
         `;
+
+        let totalCorrect = 0;  // 総正解数
+        let totalQuestions = 0; // 総問題数
+        let totalScore = 0; // 総スコア
+        let totalFullScore = 0; // 総満点
+
         const tableRows = history.map((entry, index) => {
             const fullScore = entry.questionCount * 10; // 満点計算
+            const score = entry.correctCount * 10;
+
+            totalCorrect += entry.correctCount;
+            totalQuestions += entry.questionCount;
+            totalScore += score;
+            totalFullScore += fullScore;            
+
             const dateTime = new Date(entry.timestamp).toLocaleString(); // 日付時間をフォーマット
             return `
                 <tr>
                     <td>${index + 1}</td>
                     <td>${entry.level}</td>
                     <td>${entry.correctCount}/${entry.questionCount}</td>
-                    <td>${entry.score}/${fullScore}</td>
+                    <td>${score}/${fullScore}</td>
                     <td>${entry.questionResults.map(r => `ID:${r.id}-${r.isCorrect ? '正解' : '不正解'}`).join(", ")}</td>
                     <td>${dateTime}</td>
                 </tr>
             `;
         }).join("");
+
+    // 合計行を追加
+    const totalRow = `
+        <tr style="font-weight: bold; background-color: #f8f9fa;">
+            <td colspan="2">合計</td>
+            <td>${totalCorrect}/${totalQuestions}</td>
+            <td>${totalScore}/${totalFullScore}</td>
+            <td colspan="2"></td>
+        </tr>
+    `;        
         historySection.innerHTML = `
             <table>
                 ${tableHeaders}
                 ${tableRows}
+                ${totalRow} <!-- 合計行を追加 -->
             </table>
         `;
     }
@@ -471,6 +495,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         history.forEach((entry, index) => {
             const fullScore = entry.questionCount * 10; // 満点
+            const score = entry.correctCount * 10;
             const dateTime = new Date(entry.timestamp).toLocaleString(); // 日付時間をフォーマット
 
             // 履歴番号と難易度
@@ -481,7 +506,7 @@ document.addEventListener("DOMContentLoaded", () => {
             context.fillText(`正解数/問題数: ${entry.correctCount}/${entry.questionCount}`, 310, offsetY);
 
             // スコア/満点 (間隔を調整)
-            context.fillText(`スコア: ${entry.score}/${fullScore}`, 510, offsetY);
+            context.fillText(`スコア: ${score}/${fullScore}`, 510, offsetY);
 
             // 日付
             context.fillText(`日付: ${dateTime}`, 660, offsetY);

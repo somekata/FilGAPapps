@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>クイズアプリ</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="top.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h2 id="header-title">Fil-GAPクイズ</h2>
+        <nav>
+          <button class="tab-button" data-tab="section1">問題ページ</button>
+          <button class="tab-button" data-tab="section2">正解と解説</button>
+          <button class="tab-button" data-tab="section3">履歴</button>
+          <button class="tab-button" data-tab="section4">
+            このアプリについて
+          </button>
+        </nav>
+      </header>
+      <main>
+        <!-- セクション1: 問題ページ -->
+        <section id="section1" class="tab-section active">
+          <!--<h2 class="section-title">感染症クイズへようこそ！</h2>-->
+          <div id="quiz-settings">
+            <div class="form-group">
+              <label for="keyword-input" class="form-label"
+                >キーワード（任意）を入力してください（2文字以上）:</label
+              >
+              <input
+                type="text"
+                id="keyword-input"
+                class="form-input"
+                placeholder="例: 抗菌薬"
+              />
+              <label for="level-select" class="form-label"
+                >難易度を選択してください:</label
+              >
+              <select id="level-select" class="form-select">
+                <option value="1">レベル1のみ</option>
+                <option value="2">レベル2のみ</option>
+                <option value="3">レベル3のみ</option>
+                <option value="4">レベル4のみ</option>
+                <option value="5">レベル5のみ</option>
+                <option value="all">全てのレベル</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="question-count" class="form-label"
+                >問題数*を選択してください:</label
+              >
+              <select id="question-count" class="form-select">
+                <option value="1">1問</option>
+                <option value="3">3問</option>
+                <option value="5">5問</option>
+                <option value="10">10問</option>
+                <option value="20">20問</option>
+                <option value="30">30問</option>
+                <option value="50">50問</option>
+                <option value="all">全て</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="type-select" class="form-label"
+                >タイプを選択してください:</label
+              >
+              <select id="type-select" class="form-select">
+                <option value="all">全て</option>
+                <option value="一般">一般</option>
+                <option value="症例">症例</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="language-select" class="form-label"
+                >言語を選択してください:</label
+              >
+              <select id="language-select" class="form-select">
+                <option value="all">全て</option>
+                <option value="日本語">日本語</option>
+                <option value="英語">英語</option>
+              </select>
+              <p>
+                *問題数は不足する場合があります。各レベルの問題数は「<strong>このアプリについて</strong>」で確認してください。
+              </p>
+            </div>
+
+            <button id="start-quiz" class="start-button">スタート</button>
+          </div>
+          <div id="quiz-list"></div>
+          <div id="control-buttons">
+            <button id="preview-answers" style="display: none">
+              プレビュー
+            </button>
+            <button id="reset-answers" style="display: none">
+              解答しなおす
+            </button>
+            <button id="submit-answers" style="display: none">確定</button>
+          </div>
+        </section>
+
+        <!-- セクション2: 正解と解説ページ -->
+        <section id="section2" class="tab-section">
+          <h2>正解と解説</h2>
+          <div id="answers-review">
+            選択した問題にすべて解答すると正解と解説が表示されます
+          </div>
+        </section>
+
+        <!-- セクション3: 履歴 -->
+        <section id="section3" class="tab-section">
+          <h2>履歴</h2>
+          <div id="history"></div>
+          <button id="download-certificate" style="display: none">
+            証明書をダウンロード
+          </button>
+        </section>
+
+        <!-- セクション4: このアプリについて -->
+        <section id="section4" class="tab-section">
+          <h2>このアプリについて</h2>
+          <p>
+            このアプリは、Fil-GAP問題をクイズ形式にした学習ツールです。以下に、具体的な操作方法を説明します。
+          </p>
+
+          <p><strong>操作方法:</strong></p>
+          <ul>
+            <li>
+              タブを切り替えることで、異なるセクションに移動することができます。
+            </li>
+            <li>
+              問題ページでは、以下の手順でクイズを開始できます:
+              <ul>
+                <li>
+                  キーワード（任意）、難易度、問題数を選択し、スタートボタンを押してください。
+                </li>
+                <li>
+                  キーワードを入力した場合、キーワードを含む問題が優先的に選ばれます。
+                </li>
+                <li>指定した条件により、問題数が不足する場合があります。</li>
+                <li>スタートを押すと、問題が表示されます。</li>
+              </ul>
+            </li>
+            <li>
+              問題が表示されたら、指定された数の選択肢を選んで解答してください。
+            </li>
+            <li>
+              指定された数の選択肢を選択しない場合、アラートが表示されます。なお、レベル1の問題はありません。
+            </li>
+            <li>プレビューを押した後、解答をやり直すことが可能です。</li>
+            <li>
+              確定ボタンを押すと、正解および解説が表示されます。問題ページには、以下の内容が表示されます:
+              <ul>
+                <li>正解、不正解の表示。</li>
+                <li>選択しなかった正答肢の表示。</li>
+              </ul>
+            </li>
+            <li>
+              履歴には、全体の正解数などが記録されますが、リロードすると履歴は消去されます。
+            </li>
+            <li>新しい問題を選択し、再度クイズを開始することができます。</li>
+          </ul>
+          <p>
+            このアプリを通じて、効率的かつ楽しい学びの時間をお楽しみください。
+          </p>
+          <p>現在の問題数（レベル別）:</p>
+          <div id="question-stats"></div>
+          <p>
+            *難易度をレベル1～5に分類しています。難易度は、作成者による主観的な判断ですので、目安としてください。
+          </p>
+          <!-- 問題数を表示するエリア -->
+          👉<a href="index.html" target="_blank">全ての問題・解答・解説を見る</a
+          ><br />
+          👉<a href="http://filgap.kenkyuukai.jp/" target="_blank">Fil-GAP</a
+          ><br />
+          👉<a
+            href="https://somekata.github.io/baikinscharacters/"
+            target="_blank"
+            >バイキンズキャラクターの紹介</a
+          >
+          <div id="versionInfo">
+            <p>このアプリは、ChatGPT4.0oの支援を受けて作成しました。</p>
+            <p>version 1.00 2025-02-06</p>
+          </div>
+        </section>
+      </main>
+      <div id="scrollToTop" style="display: none">
+        <img src="#" alt="Top" id="topImage" />
+      </div>
+      <footer>
+        <p>&copy; 2025 Fil-GAPクイズアプリ</p>
+      </footer>
+    </div>
+    <script src="top.js"></script>
+    <script src="quizpool.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,277 @@
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(to bottom, #e3f2fd, #90caf9);
+    margin: 0;
+    padding: 20px;
+    color: #0e0e0e;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: linear-gradient(to right, #1e88e5, #42a5f5);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(to bottom, #64b5f6, #42a5f5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    background: #1e88e5;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    background: #1565c0;
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#filter-container {
+    display: flex; /* フレックスボックスを使用 */
+    flex-direction: column; /* 縦方向に並べる */
+    align-items: flex-start; /* 左寄せに設定 */
+    justify-content: flex-start; /* 垂直方向も開始位置に揃える */
+    margin-bottom: 20px; /* 全体の下余白 */
+    width: 100%; /* コンテナを親要素の幅に揃える */
+    padding-left: 10px; /* 左側の余白を調整 */
+  }
+  
+  #filter-input {
+    width: 80%; /* フィルター窓の幅を設定 */
+    margin-bottom: 10px; /* レベルボタンとの間隔 */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #filter-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  #filter-container button {
+    margin: 5px 0; /* ボタン間の上下余白 */
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #filter-container button:hover {
+    background-color: #0056b3;
+  }  
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    padding: 15px;
+    border: 1px solid #c4e4ff;
+}
+
+table td {
+    text-align: left;
+    vertical-align: top;
+}
+
+table th:first-child,
+table td:first-child {
+    border-left: none; /* Remove extra line on the first column */
+    text-align: center;
+}
+
+table th:last-child,
+table td:last-child {
+    border-right: none; /* Remove extra line on the last column */
+    text-align: center;
+}
+
+table th {
+    background-color: #90caf9;
+}
+/*
+table tr:nth-child(even) {
+    background-color: #eef4ff;
+}
+    */
+
+
+/* Vertical View Styles */
+#verticalview div {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#verticalview div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+ol {
+    list-style-type: lower-alpha;
+    margin-left: 20px;
+    padding-left: 20px;
+    color: #070707;
+}
+
+ol li {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* Version Info */
+#versionInfo {
+    background: linear-gradient(to right, #42a5f5, #64b5f6); /* Blue gradient */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+
+#versionInfo p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #1e88e5; /* Solid blue */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+    font-style: italic;
+}
+
+/* ポップなカスタムドロップダウン */
+.pop-style {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #f0f8ff; /* 優しい淡い青 */
+    color: #444; /* ベーシックなダークグレー */
+    padding: 8px 30px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500; /* 少しだけ強調 */
+    border: 2px solid #d1dce5; /* 淡いボーダー色 */
+    border-radius: 8px; /* 控えめな丸み */
+    cursor: pointer;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij48cGF0aCBkPSJNMSA0bDE0IDBMMTAgNEwxIDl6IiBmaWxsPSIjNTc2NzliIiAvPjwvc3ZnPg==');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+  
+  .pop-style:hover {
+    background-color: #e3efff; /* ホバー時に少し明るい青 */
+    border-color: #a3c4e3; /* ホバー時のアクセント */
+  }
+  
+  .pop-style:focus {
+    outline: none;
+    border-color: #779ecb; /* フォーカス時の青色 */
+    box-shadow: 0 0 5px #a3c4e3; /* 控えめなシャドウ */
+  }
+  
+  /* How to Use Section */
+#howtouse {
+    background-color: #f9f9f9; /* 優しい背景色 */
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 12px; /* 角丸 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽いシャドウ */
+    max-width: 800px; /* 中央揃えに役立つ幅 */
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* ヘッダーのデザイン */
+  #howtouse h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 2px solid #ddd; /* 下線 */
+    padding-bottom: 10px;
+  }
+  
+  /* 段落とリストのデザイン */
+  #howtouse p {
+    margin-bottom: 15px;
+  }
+  
+  #howtouse ul {
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+  
+  #howtouse ul ul {
+    padding-left: 20px; /* ネストされたリスト用 */
+    list-style-type: circle;
+  }
+  
+  #howtouse li {
+    margin-bottom: 10px;
+  }
+  
+  /* 強調テキスト */
+  #howtouse strong {
+    color: #007bff; /* 鮮やかな青 */
+    font-weight: bold;
+  }
+  

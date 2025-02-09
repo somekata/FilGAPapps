@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使い方</title>
+    <link rel="stylesheet" href="link.css" />
+    <link rel="stylesheet" href="top.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <h1>関連リンク</h1>
+        <nav>
+          <button onclick="location.href='index.html'">問題に戻る</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div>関連ページと概要の切り替えができます。</div>
+      <div class="view-toggle">
+        <label for="viewSelect">表示切替:</label>
+        <select id="viewSelect" onchange="switchHowToUseView(this.value)">
+          <option value="relatedPages">関連ページ</option>
+          <option value="howToUse">概要</option>
+        </select>
+      </div>
+
+      <section id="howToUseSection" style="display: none">
+        <h2>概要</h2>
+        <p>
+          　Fil-GAPという研修会前後で実施した試験の全問題、解答、解説を提供しています。<a
+            href="https://somekata.github.io/filgapquiz/"
+            target="_blank"
+            >Fil-GAPで出題した問題一覧</a
+          >というページで公開している内容と同じものですが、こちらはクイズ形式機能を搭載するなど、インタラクティブな要素を追加しています。また、<a
+            href="https://somekata.github.io/quiz/"
+            target="_blank"
+            >感染症クイズ</a
+          >（試行版）では、この問題も含めて、数百問の問題を追加しています。これらアプリケーションを活用して、知識を確認や復習に役立てて下さい。
+        </p>
+
+        <h3>1. 表示形式</h3>
+        <ul>
+          <li>
+            <strong>Table View:</strong>
+            デフォルトの表示形式です。すべての問題が表形式で表示され、フィルター機能を使用して特定の問題を簡単に見つけることができます。
+          </li>
+          <li>
+            <strong>Vertical View:</strong>
+            問題形式で1問ずつ表示される形式です。解答や解説はデフォルトでは非表示ですが、ボタンを使用して個別または全体の表示を切り替えることができます。
+          </li>
+          <li>表示切替で表示形式を切り替えることができます。</li>
+        </ul>
+
+        <h3>2. フィルター機能</h3>
+        <p>
+          Table
+          Viewでは、問題文、解答、解説、領域に含まれるキーワードを検索して、特定の問題をフィルターすることができます。
+        </p>
+
+        <h3>3. 問題構成</h3>
+        <p>各問題は以下の要素で構成されています:</p>
+        <ul>
+          <li><strong>問題ID:</strong> 各問題のユニークな識別子。</li>
+          <li><strong>問題文と選択肢</strong></li>
+          <li><strong>解答と解説、領域</strong></li>
+        </ul>
+
+        <h3>4. 利用のヒント</h3>
+        <p>
+          Table
+          Viewでフィルター機能を活用して、特定の問題を効率的に見つけましょう。また、Vertical
+          Viewで問題形式で学習を進めることができます。
+        </p>
+
+        <h3>5. クイズ形式</h3>
+        <p>
+          <a href="quiz.html" target="_self">クイズ形式</a
+          >のページでは、問題を選んで模擬的に試験を受けることができます。
+        </p>
+
+        <p>
+          このアプリケーションおよび操作方法の説明は、ChatGPT-4のアシストを活用して作成しました。
+        </p>
+        <p>
+          バージョン情報: <br />
+          Fil-GAP 問題一覧 v1.0.0.0 (2025年2月6日)
+        </p>
+      </section>
+
+      <section id="relatedPagesSection">
+        <h2>関連ページ</h2>
+        <ul>
+          <li>
+            <a href="quiz.html" target="_self">クイズ形式</a>
+          </li>
+          <li>
+            <a href="https://somekata.github.io/filgapquiz/" target="_blank"
+              >Fil-GAPで出題した問題一覧</a
+            >
+          </li>
+          <li>
+            <a href="http://filgap.kenkyuukai.jp" target="_blank"
+              >Fil-GAPホーム</a
+            >
+          </li>
+          <li>
+            <a href="https://www.omu.ac.jp/med/bacteriology/" target="_blank"
+              >大阪公立大学 医学部 細菌学講座</a
+            >
+          </li>
+
+          <li>
+            <a href="https://somekata.github.io/somekata/" target="_blank"
+              >染方史郎の細菌楽教室</a
+            >
+          </li>
+          <li>
+            <a href="https://somekata.github.io/quiz/index.html" target="_blank"
+              >感染症クイズ</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://somekata.github.io/baikinscharacters/"
+              target="_blank"
+              >バイキンズキャラクターの紹介</a
+            >
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Fil-GAP. All rights reserved.</p>
+    </footer>
+    <div id="scrollToTop" style="display: none">
+      <img src="#" alt="Top" id="topImage" />
+    </div>
+    <!--<button id="backToTop" onclick="scrollToTop()">&#8679;</button>-->
+    <script src="top.js"></script>
+    <script>
+      function switchHowToUseView(view) {
+        const howToUseSection = document.getElementById("howToUseSection");
+        const relatedPagesSection = document.getElementById(
+          "relatedPagesSection"
+        );
+
+        if (view === "howToUse") {
+          howToUseSection.style.display = "block";
+          relatedPagesSection.style.display = "none";
+        } else if (view === "relatedPages") {
+          howToUseSection.style.display = "none";
+          relatedPagesSection.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>
